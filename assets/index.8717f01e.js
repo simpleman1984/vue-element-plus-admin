@@ -1,0 +1,1 @@
+import{bo as a}from"./index.1e76493d.js";const s=a(),r=a=>s.post({url:"/user/login",data:a}),l=()=>s.get({url:"/user/loginOut"}),t=({params:a})=>s.get({url:"/user/list",params:a}),e=({params:a})=>s.get({url:"/role/list",params:a}),o=({params:a})=>s.get({url:"/role/list",params:a});export{o as a,t as b,l as c,e as g,r as l};
