@@ -94,6 +94,7 @@ export default defineComponent({
         >
           {{
             default: () => {
+              console.error(' --default-> ', unref(routers))
               const { renderMenuItem } = useRenderMenuItem(unref(routers), unref(menuMode))
               return renderMenuItem()
             }
