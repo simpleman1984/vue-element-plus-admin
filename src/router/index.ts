@@ -65,11 +65,43 @@ export const asyncRouterMap: AppRouteRecordRaw[] = [
     meta: {},
     children: [
       {
-        path: 'index2',
+        path: 'index',
         component: () => import('@/views/Chat/Index.vue'),
-        name: 'index2',
+        name: 'index',
         meta: {
-          title: 'chat'
+          title: t('chat.title')
+        }
+      }
+    ]
+  },
+  {
+    path: '/contact',
+    component: Layout,
+    name: 'contact',
+    meta: {},
+    children: [
+      {
+        path: 'companycontact',
+        component: () => import('@/views/Contact/Companycontact.vue'),
+        name: 'companycontact',
+        meta: {
+          title: t('contact.companycontact')
+        }
+      },
+      {
+        path: 'phonebook',
+        component: () => import('@/views/Contact/Phonebook.vue'),
+        name: 'phonebook',
+        meta: {
+          title: t('contact.phonebook')
+        }
+      },
+      {
+        path: 'mycontact',
+        component: () => import('@/views/Contact/My.vue'),
+        name: 'mycontact',
+        meta: {
+          title: t('contact.mycontact')
         }
       }
     ]

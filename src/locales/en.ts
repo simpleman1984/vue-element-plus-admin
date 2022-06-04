@@ -1,4 +1,13 @@
 export default {
+  chat: {
+    title: 'Chat'
+  },
+  contact: {
+    title: 'Contact',
+    companycontact: 'Company Contacts',
+    phonebook: 'Phonebooks',
+    mycontact: 'My Contact'
+  },
   common: {
     inputText: 'Please input',
     selectText: 'Please select',

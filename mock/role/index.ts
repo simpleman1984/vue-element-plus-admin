@@ -10,16 +10,55 @@ const adminList = [
   {
     path: '/chat',
     component: '#',
-    redirect: '/chat/index2',
+    redirect: '/chat/index',
     name: 'chat',
     meta: {},
     children: [
       {
-        path: 'index2',
+        path: 'index',
         component: 'views/Chat/Index',
-        name: 'index2',
+        name: 'index',
         meta: {
-          title: 'chat',
+          title: 'chat.title',
+          icon: 'cib:telegram-plane'
+        }
+      }
+    ]
+  },
+  {
+    path: '/contact',
+    component: '#',
+    redirect: '/contact/companycontact',
+    name: 'contact',
+    meta: {
+      title: 'contact.title',
+      icon: 'ant-design:dashboard-filled'
+    },
+    children: [
+      {
+        path: 'companycontact',
+        component: 'views/Contact/Companycontact',
+        name: 'companycontact',
+        meta: {
+          title: 'contact.companycontact',
+          icon: 'cib:telegram-plane'
+        }
+      },
+      {
+        path: 'phonebook',
+        component: 'views/Contact/Phonebook',
+        name: 'phonebook',
+        meta: {
+          title: 'contact.phonebook',
+          icon: 'cib:telegram-plane'
+        }
+      },
+      {
+        path: 'mycontact',
+        component: 'views/Contact/My',
+        name: 'mycontact',
+        meta: {
+          title: 'contact.mycontact',
           icon: 'cib:telegram-plane'
         }
       }

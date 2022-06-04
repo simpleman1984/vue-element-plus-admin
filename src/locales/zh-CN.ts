@@ -1,4 +1,13 @@
 export default {
+  chat: {
+    title: '聊天'
+  },
+  contact: {
+    title: '通讯录',
+    companycontact: '公司通讯录',
+    phonebook: '电话本',
+    mycontact: '我的通讯录'
+  },
   common: {
     inputText: '请输入',
     selectText: '请选择',
