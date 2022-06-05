@@ -5,6 +5,7 @@ import { Backtop } from '@/components/Backtop'
 import { Setting } from '@/components/Setting'
 import { useRenderLayout } from './components/useRenderLayout'
 import { useDesign } from '@/hooks/web/useDesign'
+import { Dialpad } from '@/components/Dialpad/index'
 
 const { getPrefixCls } = useDesign()
 
@@ -60,6 +61,8 @@ export default defineComponent({
         <Backtop></Backtop>
 
         <Setting></Setting>
+
+        <Dialpad></Dialpad>
       </section>
     )
   }

@@ -66,7 +66,7 @@ watch(
 </script>
 
 <template>
-  <ElIcon :class="prefixCls" :size="size" :color="color">
+  <ElIcon :class="prefixCls" :size="size" :color="color" style="vertical-align: middle">
     <svg v-if="isLocal" aria-hidden="true">
       <use :xlink:href="symbolId" />
     </svg>
