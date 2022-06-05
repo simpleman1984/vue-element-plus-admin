@@ -7,7 +7,11 @@ const prefixCls = getPrefixCls('setting')
 const drawer = ref(false)
 const dialNumber = ref('')
 const dial = (num) => {
+  dialNumber.value += '' + num
   console.info('num', num, dialNumber)
+}
+const clearDial = () => {
+  dialNumber.value = ''
 }
 </script>
 <template>
@@ -21,12 +25,17 @@ const dial = (num) => {
   >
     <Icon :size="32" icon="material-symbols:dialer-sip-rounded" color="#fff" />
   </div>
-  <div class="fixed right-100px bottom-100px w-320px">
+  <div class="fixed right-100px bottom-100px w-270px">
     <Icon :size="32" icon="ep:circle-close" color="#fff" class="dialpad_close" />
     <ElCard class="box-card" :body-style="{ padding: '0px' }">
       <template #header>
         <div class="card-header">
-          <ElInput placeholder="Enter the number" class="dialpad_number" clearable />
+          <ElInput
+            v-model="dialNumber"
+            placeholder="Enter the number"
+            class="dialpad_number"
+            clearable
+          />
         </div>
       </template>
       <ElRow>
@@ -105,7 +114,7 @@ const dial = (num) => {
           </div>
         </ElCol>
         <ElCol :span="8">
-          <div class="grid-content text-center bg-purple-light">
+          <div class="grid-content text-center bg-purple-light" @click="clearDial()">
             <Icon icon="fa6-solid:delete-left" color="#fff" />
           </div>
         </ElCol>
