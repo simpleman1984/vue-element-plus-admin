@@ -1,9 +1,57 @@
 <script setup lang="ts">
 import { ElDivider } from 'element-plus'
+import { reactive } from 'vue'
+
+const position = reactive({
+  init: false,
+  x: 0,
+  y: 0,
+  width: 0,
+  height: 0,
+  isDragging: false,
+  dragStartX: 0,
+  dragStartY: 0
+})
+const mousedown = (e: MouseEvent) => {
+  let { clientX, clientY } = e
+  position.dragStartX = clientX - position.x
+  position.dragStartY = clientY - position.y
+  position.isDragging = true
+  document.addEventListener('mouseup', mouseup)
+  document.addEventListener('mousemove', mousemove)
+  console.info('mousedown', e)
+  let element = (e.target as HTMLElement).parentElement
+  let rect = (element as HTMLElement).getBoundingClientRect()
+  position.x = Math.round(rect.x)
+  position.y = Math.round(rect.y)
+  position.width = Math.round(rect.width)
+  position.height = Math.round(rect.height)
+  console.info(position)
+}
+
+const min = (v1, v2) => (v1 > v2 ? v2 : v1)
+
+const max = (v1, v2) => (v1 > v2 ? v1 : v2)
+
+const mousemove = (e) => {
+  let { clientX, clientY } = e
+  console.info(e, screen)
+  position.x = min(max(0, clientX - position.dragStartX), window.innerWidth - position.width)
+  position.y = min(max(0, clientY - position.dragStartY), window.innerHeight - position.height)
+}
+
+const mouseup = () => {
+  position.isDragging = false
+  document.removeEventListener('mouseup', mouseup)
+  document.removeEventListener('mousemove', mousemove)
+}
 </script>
 <template>
-  <section class="rtc-panel fixed w-640px h-480px bg-gray-900 z-10000">
-    <div class="rtc-header w-full bg-black-500">
+  <section
+    class="rtc-panel fixed w-640px h-480px bg-gray-900 z-10000"
+    :style="{ left: `${position.x}px`, top: `${position.y}px` }"
+  >
+    <div class="rtc-header w-full bg-black-500 cursor-move" @mousedown.prevent.stop="mousedown">
       aihua aihua
       <ElDivider direction="vertical" />
       1008
@@ -21,7 +69,7 @@ import { ElDivider } from 'element-plus'
     </div>
     <div class="rtc-controller h-88px">
       <div class="w-60px px-4px pt-20px text-center float-left">
-        <div class="w-40px h-40px rounded-1/2 bg-gray-50">
+        <div class="w-40px h-40px rounded-1/2 bg-gray-50 m-auto">
           <Icon
             :size="28"
             class="text-black-500 pt-5px"
@@ -32,7 +80,7 @@ import { ElDivider } from 'element-plus'
         <div class="text-xs text-center pt-10px">New Call</div>
       </div>
       <div class="w-60px px-4px pt-20px text-center float-right">
-        <div class="w-40px h-40px rounded-1/2 bg-gray-50">
+        <div class="w-40px h-40px rounded-1/2 bg-gray-50 m-auto">
           <Icon
             :size="28"
             class="text-black-500 pt-5px"
@@ -43,7 +91,7 @@ import { ElDivider } from 'element-plus'
         <div class="text-xs text-center pt-10px">End Call</div>
       </div>
       <div class="w-60px px-4px pt-20px text-center float-right">
-        <div class="w-40px h-40px rounded-1/2 bg-gray-50">
+        <div class="w-40px h-40px rounded-1/2 bg-gray-50 m-auto">
           <Icon
             :size="28"
             class="text-black-500 pt-5px"
@@ -54,7 +102,7 @@ import { ElDivider } from 'element-plus'
         <div class="text-xs text-center pt-10px">Transfer</div>
       </div>
       <div class="w-60px px-4px pt-20px text-center float-right">
-        <div class="w-40px h-40px rounded-1/2 bg-gray-50">
+        <div class="w-40px h-40px rounded-1/2 bg-gray-50 m-auto">
           <Icon
             :size="28"
             class="text-black-500 pt-5px px-0px"
@@ -65,7 +113,7 @@ import { ElDivider } from 'element-plus'
         <div class="text-xs text-center pt-10px">Record</div>
       </div>
       <div class="w-60px px-4px pt-20px text-center float-right">
-        <div class="w-40px h-40px rounded-1/2 bg-gray-50">
+        <div class="w-40px h-40px rounded-1/2 bg-gray-50 m-auto">
           <Icon
             :size="28"
             class="text-black-500 pt-5px"
@@ -76,7 +124,7 @@ import { ElDivider } from 'element-plus'
         <div class="text-xs text-center pt-10px">Dialpad</div>
       </div>
       <div class="w-60px px-4px pt-20px text-center float-right">
-        <div class="w-40px h-40px rounded-1/2 bg-gray-50">
+        <div class="w-40px h-40px rounded-1/2 bg-gray-50 m-auto">
           <Icon
             :size="28"
             class="text-black-500 pt-5px px-0px px-0px"
@@ -87,7 +135,7 @@ import { ElDivider } from 'element-plus'
         <div class="text-xs text-center pt-10px">Hold</div>
       </div>
       <div class="w-60px px-4px pt-20px text-center float-right">
-        <div class="w-40px h-40px rounded-1/2 bg-gray-50">
+        <div class="w-40px h-40px rounded-1/2 bg-gray-50 m-auto">
           <Icon
             :size="28"
             class="text-black-500 pt-5px px-0px"
@@ -98,7 +146,7 @@ import { ElDivider } from 'element-plus'
         <div class="text-xs text-center pt-10px">Mute</div>
       </div>
       <div class="w-60px px-4px pt-20px text-center float-right">
-        <div class="w-40px h-40px rounded-1/2 bg-gray-50">
+        <div class="w-40px h-40px rounded-1/2 bg-gray-50 m-auto">
           <Icon
             :size="28"
             class="text-black-500 pt-5px"

@@ -1,8 +1,6 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import { useDesign } from '@/hooks/web/useDesign'
-import { DndProvider } from 'vue3-dnd'
-import { HTML5Backend } from 'react-dnd-html5-backend'
 import { ElCard, ElRow, ElInput, ElCol } from 'element-plus'
 import RtcPanel from './rtcPanel.vue'
 const { getPrefixCls } = useDesign()
@@ -121,9 +119,7 @@ const clearDial = () => {
       </ElRow>
     </ElCard>
   </div>
-  <DndProvider :backend="HTML5Backend">
-    <RtcPanel />
-  </DndProvider>
+  <RtcPanel />
 </template>
 <style lang="less" scoped>
 .phonering {
