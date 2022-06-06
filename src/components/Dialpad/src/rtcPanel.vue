@@ -14,12 +14,12 @@ const position = reactive({
 })
 const mousedown = (e: MouseEvent) => {
   let { clientX, clientY } = e
+  console.info(e)
   position.dragStartX = clientX - position.x
   position.dragStartY = clientY - position.y
   position.isDragging = true
   document.addEventListener('mouseup', mouseup)
   document.addEventListener('mousemove', mousemove)
-  console.info('mousedown', e)
   let element = (e.target as HTMLElement).parentElement
   let rect = (element as HTMLElement).getBoundingClientRect()
   position.x = Math.round(rect.x)
@@ -35,7 +35,6 @@ const max = (v1, v2) => (v1 > v2 ? v1 : v2)
 
 const mousemove = (e) => {
   let { clientX, clientY } = e
-  console.info(e, screen)
   position.x = min(max(0, clientX - position.dragStartX), window.innerWidth - position.width)
   position.y = min(max(0, clientY - position.dragStartY), window.innerHeight - position.height)
 }
@@ -51,12 +50,20 @@ const mouseup = () => {
     class="rtc-panel fixed w-640px h-480px bg-gray-900 z-10000"
     :style="{ left: `${position.x}px`, top: `${position.y}px` }"
   >
-    <div class="rtc-header w-full bg-black-500 cursor-move" @mousedown.prevent.stop="mousedown">
+    <div
+      class="rtc-header w-full h-32px leading-32px bg-black-500 cursor-move pl-10px"
+      @mousedown.self.stop.prevent="mousedown"
+    >
       aihua aihua
       <ElDivider direction="vertical" />
       1008
-      <Icon :size="25" class="float-right py-5px" icon="bx:fullscreen" color="#fff" />
-      <Icon :size="25" class="float-right" icon="prime:window-minimize" color="#fff" />
+      <Icon :size="22" class="float-right my-5px mr-5px" icon="bx:fullscreen" color="#fff" />
+      <Icon
+        :size="22"
+        class="float-right my-5px mr-5px"
+        icon="prime:window-minimize"
+        color="#fff"
+      />
     </div>
     <div class="rtc-body bg-gray-500 h-358px leading-358px pt-107px">
       <div class="w-144px h-144px m-auto pt-13px bg-gray-100 rounded-1/2 text-center align-middle">
