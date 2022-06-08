@@ -92,7 +92,7 @@ export default {
   },
   login: {
     welcome: 'Welcome to the system',
-    message: 'Backstage management system',
+    message: 'puteyun contact-center management system',
     username: 'Username',
     password: 'Password',
     login: 'Sign in',

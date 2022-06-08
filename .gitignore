@@ -6,3 +6,4 @@ dist-ssr
 /dist*
 pnpm-debug
 yarn.lock
+package-lock.json

@@ -51,18 +51,21 @@ const mouseup = () => {
     :style="{ left: `${position.x}px`, top: `${position.y}px` }"
   >
     <div
-      class="rtc-header w-full h-32px leading-32px bg-black-500 cursor-move pl-10px"
+      class="rtc-header w-full h-32px leading-32px bg-black-500 dark:bg-light-500 cursor-move pl-10px text-light-50 dark:text-dark-500"
       @mousedown.self.stop.prevent="mousedown"
     >
       aihua aihua
       <ElDivider direction="vertical" />
       1008
-      <Icon :size="22" class="float-right my-5px mr-5px" icon="bx:fullscreen" color="#fff" />
       <Icon
         :size="22"
-        class="float-right my-5px mr-5px"
+        class="float-right my-5px mr-5px text-light-500 dark:text-black-500"
+        icon="bx:fullscreen"
+      />
+      <Icon
+        :size="22"
+        class="float-right my-5px mr-5px text-light-500 dark:text-black-500"
         icon="prime:window-minimize"
-        color="#fff"
       />
     </div>
     <div class="rtc-body bg-gray-500 h-358px leading-358px pt-107px">
@@ -84,7 +87,7 @@ const mouseup = () => {
             color="black"
           />
         </div>
-        <div class="text-xs text-center pt-10px">New Call</div>
+        <div class="text-xs text-center pt-10px text-light-500">New Call</div>
       </div>
       <div class="w-60px px-4px pt-20px text-center float-right">
         <div class="w-40px h-40px rounded-1/2 bg-gray-50 m-auto">
@@ -95,7 +98,7 @@ const mouseup = () => {
             color="black"
           />
         </div>
-        <div class="text-xs text-center pt-10px">End Call</div>
+        <div class="text-xs text-center pt-10px text-light-500">End Call</div>
       </div>
       <div class="w-60px px-4px pt-20px text-center float-right">
         <div class="w-40px h-40px rounded-1/2 bg-gray-50 m-auto">
@@ -106,7 +109,7 @@ const mouseup = () => {
             color="black"
           />
         </div>
-        <div class="text-xs text-center pt-10px">Transfer</div>
+        <div class="text-xs text-center pt-10px text-light-500">Transfer</div>
       </div>
       <div class="w-60px px-4px pt-20px text-center float-right">
         <div class="w-40px h-40px rounded-1/2 bg-gray-50 m-auto">
@@ -117,7 +120,7 @@ const mouseup = () => {
             color="black"
           />
         </div>
-        <div class="text-xs text-center pt-10px">Record</div>
+        <div class="text-xs text-center pt-10px text-light-500">Record</div>
       </div>
       <div class="w-60px px-4px pt-20px text-center float-right">
         <div class="w-40px h-40px rounded-1/2 bg-gray-50 m-auto">
@@ -128,7 +131,7 @@ const mouseup = () => {
             color="black"
           />
         </div>
-        <div class="text-xs text-center pt-10px">Dialpad</div>
+        <div class="text-xs text-center pt-10px text-light-500">Dialpad</div>
       </div>
       <div class="w-60px px-4px pt-20px text-center float-right">
         <div class="w-40px h-40px rounded-1/2 bg-gray-50 m-auto">
@@ -139,7 +142,7 @@ const mouseup = () => {
             color="black"
           />
         </div>
-        <div class="text-xs text-center pt-10px">Hold</div>
+        <div class="text-xs text-center pt-10px text-light-500">Hold</div>
       </div>
       <div class="w-60px px-4px pt-20px text-center float-right">
         <div class="w-40px h-40px rounded-1/2 bg-gray-50 m-auto">
@@ -150,7 +153,7 @@ const mouseup = () => {
             color="black"
           />
         </div>
-        <div class="text-xs text-center pt-10px">Mute</div>
+        <div class="text-xs text-center pt-10px text-light-500">Mute</div>
       </div>
       <div class="w-60px px-4px pt-20px text-center float-right">
         <div class="w-40px h-40px rounded-1/2 bg-gray-50 m-auto">
@@ -161,7 +164,7 @@ const mouseup = () => {
             color="black"
           />
         </div>
-        <div class="text-xs text-center pt-10px">Video</div>
+        <div class="text-xs text-center pt-10px text-light-500">Video</div>
       </div>
     </div>
   </section>
